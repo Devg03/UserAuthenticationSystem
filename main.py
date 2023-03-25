@@ -10,26 +10,38 @@ def passVerify(name: str, pass1: str, pass2: str):
     # TODO: Needs to add to the User's object
 
 
-def signUp():
-    name = input('Please enter your full name: ')
-    print(f'Nice to meet you {name}.')
-
-    # TODO: Needs to create a hash map or an object that bundles an user information
-
-    userName = input(f'{name}, Please enter the user name that you wish to set for your account: ')
-
-    # TODO: Username should not have spaces
-    # TODO: Needs to check if this username is taken or not through iterating the credentials file
-
-    email = input(f'{name}, Please enter your email: ')
-
-    # TODO: Needs to add it to the User's object
-    # TODO: If possible I can possibly add email verification system.
-
+def setPassword(name: str):
     password1 = input('Please enter your password: ')
     password2 = input('Please enter you password again: ')
 
     passVerify(name, password1, password2)
+
+
+def setEmail(name: str):
+    email = input(f'{name}, Please enter your email: ')
+
+    # TODO: Needs to add it to the User's object
+    # TODO: If possible I can possibly add email verification system.
+    setPassword(name)
+
+
+def setUserName(name: str):
+    userName = input(f'{name}, Please enter the user name that you wish to set for your account: ')
+    if " " in userName:
+        print("Your username should not have any spaces.")
+        setUserName(name)
+    else:
+        setEmail(name)
+
+    # TODO: Needs to check if this username is taken or not through iterating the credentials file
+
+
+def signUp():
+    name = input('Please enter your full name: ')
+    print(f'Nice to meet you {name}.')
+
+    setUserName(name)
+    # TODO: Needs to create a hash map or an object that bundles an user information
 
 
 def login():
