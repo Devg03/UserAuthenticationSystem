@@ -19,4 +19,4 @@ def createFile(name: str, userName: str, email: str, password: str):
 def main(name: str, userName: str, email: str, password: str):
     users_info = {'name': name, 'Username': userName, 'email': email, 'password': password}
 
-    createFile(name, userName, email, password)
+    createFile(users_info['name'], users_info['Username'], users_info['email'], users_info['password'])
