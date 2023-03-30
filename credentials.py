@@ -1,5 +1,3 @@
-# Needs to check if the username is taken
-
 file = open('database.txt', "a+")
 
 
