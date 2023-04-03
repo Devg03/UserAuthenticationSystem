@@ -22,6 +22,7 @@ def setInfo(name: str):
             setInfo(name)
         else:
             email = input(f'{name}, Please enter your email: ')
+            # TODO: Check if it is actually an email.
 
             # TODO: If possible I can possibly add email verification system.
             password1 = input('Please enter your password: ')
@@ -37,12 +38,11 @@ def setInfo(name: str):
 
 def login():
     user = input("Please enter your user name: ")
-    if credentials.userName_check(user):
-        password = input("Please enter your password: ")
-    # TODO: Must check if the User's password matches the corresponding email or username
-
+    password = input("Please enter your password: ")
+    if credentials.check(user, password):
+        print(f'\nWelcome, {user}')
     else:
-        print('Enter a valid response.')
+        print('Your password or email is incorrect.')
 
 
 def main():

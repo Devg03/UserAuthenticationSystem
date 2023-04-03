@@ -6,13 +6,22 @@ def userName_check(userName: str) -> bool:
         for item in dataB:
             if item.__contains__(userName):
                 return True
-            else:
-                return False
+        return False
+
+
+def check(userName: str, password: str) -> bool:
+    with open("database.txt") as dataB:
+        lines = dataB.readlines()
+        for item in lines:
+            if userName in item and password in item:
+                return True
+        return False
 
 
 def createFile(name: str, userName: str, email: str, password: str):
-    form = f'{userName} = [Name: {name}, userName: {userName}, Email: {email}, Password: {password}] '
+    form = f'{userName} = [Name: {name}, User Name: {userName}, Email: {email}, Password: {password}] '
     file.write(form + "\n")
+
     file.close()
 
 
