@@ -2,7 +2,7 @@ import credentials
 
 
 def passInfo(name: str, userName: str, email: str, password: str):
-    credentials.main(name, userName, email, password)
+    credentials.setEve(name, userName, email, password)
 
 
 def passVerify(password1: str, password2: str) -> bool:
@@ -16,7 +16,7 @@ def passVerify(password1: str, password2: str) -> bool:
 def setInfo(name: str):
     userName = input(f'{name}, Please enter the user name that you wish to set for your account: ')
     # Checks if the username is taken or not based on 0 or anything else (Which is 1).
-    if credentials.userName_check(userName) == 0:
+    if not credentials.userName_check(userName):
         if " " in userName:
             print("Your username should not have any spaces.")
             setInfo(name)
@@ -35,6 +35,16 @@ def setInfo(name: str):
         print(f"Please choose a different username, {userName} is taken")
 
 
+def login():
+    user = input("Please enter your user name: ")
+    if credentials.userName_check(user):
+        password = input("Please enter your password: ")
+    # TODO: Must check if the User's password matches the corresponding email or username
+
+    else:
+        print('Enter a valid response.')
+
+
 def main():
     # TODO: At last, add a welcoming message first and then present selection
 
@@ -47,13 +57,7 @@ def main():
         setInfo(name)
 
     elif selection == 'Login':
-        userOrEmail = input("Please enter your user name or email: ")
-        # TODO: Must setup the User's object first in order to verify if the username or email even exists
-
-        password = input("Please enter your password: ")
-        # TODO: Must check if the User's password matches the corresponding email or username
-    else:
-        print('Enter a valid response.')
+        login()
 
 
 if __name__ == '__main__':
