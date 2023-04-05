@@ -15,7 +15,6 @@ def passVerify(password1: str, password2: str) -> bool:
 
 def setCredentials(name: str, userName: str):
     email = input(f'{name}, Please enter your email: ')
-    # TODO: Check if it is actually an email.
     splits = email.split('@')
     if splits[1] == 'gmail.com' or splits[1] == 'yahoo.com' or splits[1] == 'outlook.com':
         print('Valid Email')
@@ -39,7 +38,6 @@ def setUsername(name: str):
     setInfo(name, userName)
 
 
-# TODO: Username verification needs work\
 def setInfo(name: str, userName: str):
     if credentials.userName_check(userName):
         print(f"Please choose a different username, {userName} is taken")
